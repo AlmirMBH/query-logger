@@ -32,7 +32,7 @@ class QueryLogger
             $memoryAfter = memory_get_usage();
             $memoryUsed = $memoryAfter - $memoryBefore;
 
-            if ($memoryUsed > 24000000 && floatval($log['Execution time']) > 20) { // 3MB & 20ms
+            if ($memoryUsed > 12000000 && floatval($log['Execution time']) > 20) { // 1,5MB & 20ms
                 $log['Request memory'] = $this->formatUsedMemory($memoryUsed);
                 Log::stack(['database_query_log'])->info(json_encode([$log, $sqlQuery]));
             }
